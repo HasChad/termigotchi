@@ -52,19 +52,26 @@ void mainmenu() {
 
     cout << "   " << GREEN << "1. " << RESET << "Yeni Oyun" << endl;
     cout << "   " << GREEN << "2. " << RESET << "Kayıt Yükle" << endl;
-    cout << "   " << GREEN << "3. " << RESET << "Çıkış" << endl << endl;
-    cout << "Seçenek: ";
+    cout << "   " << RED << "0. " << RESET << "Çıkış" << endl << endl;
+    cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n";
+    cout << " > Seçenek: ";
 
-    int choice = -1;
+    int choice;
     cin >> choice;
+
+    switch (choice) {
+    case 0:
+        app.appState = State::Quit;
+        break;
+    case 1:
+        app.appState = State::Naming;
+        break;
+    case 2:
+        break;
+    }
+
     cin.clear();
     cin.ignore();
-
-    if (choice == 1) {
-        app.appState = State::Naming;
-    } else if (choice == 3) {
-        app.appState = State::Quit;
-    }
 }
 
 void naming() {
@@ -101,30 +108,30 @@ int main() {
             naming();
             break;
         case State::Gameplay:
-            cout << setw(10) << "Isim" << "  " << BLUE << app.pet.name << RESET << endl;
-            cout << setw(10) << app.pet.health << "  " << "[||||||||||]" << endl;
-            cout << setw(10) << app.pet.energy << "  " << "[||||||||||]" << endl;
-            cout << setw(10) << app.pet.moral << "  " << "[||||||||||]" << endl;
-            cout << setw(10) << app.pet.hunger << "  " << "[||||||||||]" << endl;
+            cout << setw(5) << "Isim" << "  " << BLUE << app.pet.name << RESET << endl;
+            cout << setw(5) << app.pet.health << "  " << "[||||||||||]" << endl;
+            cout << setw(5) << app.pet.energy << "  " << "[||||||||||]" << endl;
+            cout << setw(5) << app.pet.moral << "  " << "[||||||||||]" << endl;
+            cout << setw(5) << app.pet.hunger << "  " << "[||||||||||]" << endl;
             cout << endl;
 
-            cout << "   " << "Ne yapmak istersin?" << endl;
+            cout << "  " << "Ne yapmak istersin?" << endl;
             cout << "   " << GREEN << "1. " << RESET << "Yemek yedir" << endl;
             cout << "   " << GREEN << "2. " << RESET << "Oyun oyna" << endl;
             cout << "   " << GREEN << "3. " << RESET << "Uyut" << endl;
             cout << "   " << RED << "0. " << RESET << "Çıkış" << endl;
             cout << endl;
 
-            cout << setw(10) << "Choice: ";
+            cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n";
+            cout << " > Seçenek: ";
             cin >> choice;
-            cin.clear();
-            cin.ignore();
 
             if (choice == 0) {
                 app.appState = State::Quit;
             }
+            cin.clear();
+            cin.ignore();
 
-            choice = -1;
             break;
         case State::Pause:
             break;
