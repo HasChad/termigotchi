@@ -49,12 +49,15 @@ void naming_screen() {
 
 void load_game_screen() {
     cout << "\n > Bu kaydı yüklemek istiyor musun? (";
-    cout << GREEN << "E" << RESET << "/" << RED << "H" << RESET << "): ";
+    cout << "   " << GREEN << "1. " << RESET << "Evet" << endl;
+    cout << "   " << GREEN << "2. " << RESET << "Hayır" << endl << endl;
+    cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n";
+    cout << " > Seçenek: ";
 
-    char sel;
+    int sel;
     cin >> sel;
 
-    if (sel == 'e' || sel == 'E') {
+    if (sel == 1) {
         app.appState = State::Gameplay;
     } else {
         app.appState = State::MainMenu;
@@ -65,13 +68,16 @@ void load_game_screen() {
 }
 
 void quit_screen() {
-    cout << "\n > Oyundan çıkmak istediğine emin misin? (";
-    cout << GREEN << "E" << RESET << "/" << RED << "H" << RESET << "): ";
+    cout << "\n > Oyundan çıkmak istediğine emin misin?" << endl;
+    cout << "   " << GREEN << "1. " << RESET << "Evet" << endl;
+    cout << "   " << GREEN << "2. " << RESET << "Hayır" << endl << endl;
+    cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n";
+    cout << " > Seçenek: ";
 
-    char sel;
+    int sel;
     cin >> sel;
 
-    if (sel == 'e' || sel == 'E') {
+    if (sel == 1) {
         app.run = false;
     } else {
         app.appState = State::Gameplay;
@@ -79,14 +85,14 @@ void quit_screen() {
 }
 
 void gameplay_screen() {
-    cout << setw(6) << "Isim" << " " << BLUE << app.pet.name << RESET << endl;
-    cout << setw(5) << app.pet.health << "% " << "[||||||||||]" << endl;
-    cout << setw(5) << app.pet.energy << "% " << "[||||||||||]" << endl;
-    cout << setw(5) << app.pet.moral << "% " << "[||||||||||]" << endl;
-    cout << setw(5) << app.pet.hunger << "% " << "[||||||||||]" << endl;
+    cout << setw(10) << "Isim: " << BLUE << app.pet.name << RESET << endl;
+    cout << setw(10) << "Can: " << app.pet.health << "% " << "[||||||||||]" << endl;
+    cout << setw(10) << "Enerji: " << app.pet.energy << "% " << "[||||||||||]" << endl;
+    cout << setw(10) << "Moral: " << app.pet.moral << "% " << "[||||||||||]" << endl;
+    cout << setw(10) << "Aclik: " << app.pet.hunger << "% " << "[||||||||||]" << endl;
     cout << endl;
 
-    cout << "  " << "Ne yapmak istersin?" << endl;
+    cout << " > Ne yapmak istersin?" << endl;
     cout << "   " << GREEN << "1. " << RESET << "Yemek yedir" << endl;
     cout << "   " << GREEN << "2. " << RESET << "Oyun oyna" << endl;
     cout << "   " << GREEN << "3. " << RESET << "Uyut" << endl;

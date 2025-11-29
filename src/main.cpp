@@ -1,6 +1,8 @@
+#include "ansi_escape_codes.h"
 #include "globals.h"
 #include "menus.h"
 #include <clocale>
+#include <iostream>
 
 using namespace std;
 
@@ -30,6 +32,10 @@ int main() {
             break;
         }
     }
+
+    system("clear");
+    cout << MAGENTA << BOLD_ON;
+    cout << " > Sonra görüşürüz!!! Tekrar gelmeyi unutma!!! :3" << endl;
 
     return 0;
 }
